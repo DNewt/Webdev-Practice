@@ -27,5 +27,7 @@ module.exports = router;
 
 router.get('/search', function(req,res){
 	console.log("FGUDIFHI");
-	res.render('search', { title: 'Colenso', content: req.query.searchString });
+	res.render('search', { title: 'Colenso', content: req.query.searchString }, function(err, html) {
+		console.log("big dumb nerd");	
+	});
 });
