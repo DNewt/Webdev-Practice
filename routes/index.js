@@ -10,7 +10,7 @@ router.get("/",function(req,res){
 	client.execute(tei + " (//name[@type='place'])[1] ", function (error, result) {
 			if(error){console.error(error);}
 			else {
-				res.render('index', { title: 'Colenso Project', place: result.result, database_list: [] });
+				res.render('index', { title: 'Colenso Project', place: result.result });
 			}
 		}
 	);
@@ -18,8 +18,7 @@ router.get("/",function(req,res){
 
 //Search 
 router.get("/search",function(req,res){
-	console.log("tei + searchString: " + tei + req.query.searchString);
-	client.execute(tei+ req.query.searchString,
+	client.execute(tei + "for $t in //text where matches($t, '" + req.query.searchString + "', 'i') = true() return db:path($t)",
 		function (error, result) {
 			if(error){ 
 				console.error(error);
@@ -31,5 +30,7 @@ router.get("/search",function(req,res){
 		}
 	);
 });
+
+
 
 module.exports = router;
