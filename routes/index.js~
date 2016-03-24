@@ -23,9 +23,21 @@ router.get('/', function(req, res){
  		);
 });
 
+
+router.get('/search', function(req,res){
+	
+	res.render('search', { title: 'Colenso', content: req.query.searchString });
+	
+});
+
 module.exports = router;
 
-router.post('/search', function(req,res){
-	console.log("FGUDIFHI");
-	res.render('search', { title: 'Colenso', content: req.query.searchString });
-});
+
+
+//res.render('search', { title: 'Colenso', content: req.query.searchString }, function(err, html) {
+	
+	//});
+	
+	//Function searchQueary(userSearch){
+//   Return "SELECT * FROM [tableName] WHERE [table.value] == userSearch
+//}
