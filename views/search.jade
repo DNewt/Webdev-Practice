@@ -7,4 +7,18 @@ block body
     .container
         h1= title
         .container
-            p| Search page #{content}
+            p| Welcome to #{title}. We have an excellent collection of information for you.
+             | We are based in !{place}.
+        .container
+            form(action="/search", method="get")
+                input(type="text", name="searchString")
+                input(type="submit")
+        .container
+            form(action="/browse", method="get")
+                input(type="submit", value = "Browse")
+    .search-results
+        ul
+            each val in search_results
+                li
+                    a(href="/documents/#{val}")
+                        p #{val}
