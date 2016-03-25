@@ -28,10 +28,21 @@ router.get("/search", function(req,res){
 });
 
 router.get("/browse", function(req,res){
-	console.log("Here");
 	client.execute(tei + "for $t in //text where matches($t, '" + " " + "', 'i') = true() return db:path($t)",
 		function (error, result) {
-			console.log("Here");
+			if(error){
+				res.status(500).send(error);
+			} else {
+				res.render('search', { title: 'Colenso Project', search_results: result.result.split('\n') });
+			}
+		}
+	);
+});
+
+router.get("/xquery", function(req,res){
+	console.log("here");
+	client.execute(tei + "for $t in //text where matches($t, '" + req.query.searchXQuery + "', 'i') = true() return db:path($t)",
+		function (error, result) {
 			if(error){
 				res.status(500).send(error);
 			} else {

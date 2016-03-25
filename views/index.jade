@@ -1,18 +1,126 @@
-extends ../node_modules/jade-bootstrap/_bootstrap
-
-block body
-    +navbar("Colenso", "dropdown_menu")
-        +nav_item("/", "active") Home
-        +nav_item("/search") Search
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Colenso Database
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='css/modern-business.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    // Navigation
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='index') Colenso Database
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='search') Search Database
+        // /.navbar-collapse
+      // /.container
+    // Header Carousel
+    header#myCarousel.carousel.slide
+      // Indicators
+      ol.carousel-indicators
+        li.active(data-target='#myCarousel', data-slide-to='0')
+        li(data-target='#myCarousel', data-slide-to='1')
+        li(data-target='#myCarousel', data-slide-to='2')
+      // Wrapper for slides
+      .carousel-inner
+        .item.active
+          .fill(style="background-image:url('http://placehold.it/1900x1080&text=Slide One');")
+          .carousel-caption
+            h2 Caption 1
+        .item
+          .fill(style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');")
+          .carousel-caption
+            h2 Caption 2
+        .item
+          .fill(style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');")
+          .carousel-caption
+            h2 Caption 3
+      // Controls
+      a.left.carousel-control(href='#myCarousel', data-slide='prev')
+        span.icon-prev
+      a.right.carousel-control(href='#myCarousel', data-slide='next')
+        span.icon-next
+    // Page Content
     .container
-        h1= title
-        .container
-            p| Welcome to #{title}. We have an excellent collection of information for you.
-             | We are based in !{place}.
-        .container
-            form(action="/search", method="get")
-                input(type="text", name="searchString")
-                input(type="submit")
-        .container
-            form(action="/browse", method="get")
-                input(type="submit", value = "Browse")
+      // Features Section
+      .row
+        .col-lg-12
+          h2.page-header The Colenso Project
+        .col-md-6
+          p 
+           
+            The Colenso Society, Victoria University of Wellington and MTG Hawke's Bay are delighted to announce
+            the establishment of the Colenso Project. This exciting new initiative seeks to build on the blossoming 
+            national and international interest in William Colenso’s life and ideas as the result of the William Colenso
+            Bicentenary Celebrations in Hawke’s Bay in 2011, and a body of new publications and research.
+
+            The intent of the Project is to ignite public and academic interest in Colenso’s words – published, unpublished,
+            private letters, journals - both in Maori and English, by sharing them with the world in digital form. We envisage
+            a hub for all things Colenso: a place to read documents in the original, explore his writing through transcriptions,
+            and as a place to experiment with new research and interpretation methods.
+
+            This website will be the home of the Project, but its strength will lie in the collaboration between the many
+            organisations and individuals that will contribute information, ideas and energy to the Project.
+
+            The first priority for the Project is the creation of a comprehensive bibliography of all William Colenso holdings.
+            This is currently being compiled and is now available on bibliography page. Bringing our collective knowledge to bear 
+            on Colenso material, wherever it lies, will determine the strength of this bibliography, and to this end contributions
+            and information are welcomed from individuals and institutions.
+
+            Further project details will be announced in the New Year, alongside the fundraising and sponsorship strategies that will
+            be vital in developing the Project. If you are interested in being involved, and/or have information about Colenso holdings
+            you can share with us, please contact one of the project team members below, or email us.
+          
+          p
+            
+        .col-md-6
+          img.img-responsive(src='http://placehold.it/700x450', alt='')
+      // /.row
+      hr
+      // Call to Action Section
+      .well
+        .row
+          .col-md-8
+            p
+              | Search the Colenso Database
+          .col-md-4
+            a.btn.btn-lg.btn-default.btn-block(href='search') Search The Database
+      hr
+      // Footer
+      footer
+        .row
+          .col-lg-12
+            p Copyright © David Newton 2016
+    // /.container
+    // jQuery
+    script(src='js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap.min.js')
+    // Script to Activate the Carousel
+    script.
+      $('.carousel').carousel({
+      interval: 5000 //changes the speed
+      })
